@@ -8,5 +8,5 @@ class TaskRepository(ABC):
         pass
 
     @abstractmethod
-    def list(self):
+    def list(self) -> list[Task]:
         pass

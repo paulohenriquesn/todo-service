@@ -10,3 +10,6 @@ class TaskService(TaskUseCases):
 
     def create(self, task: Task):
         self.task_repository.create(task)
+
+    def list(self) -> list[Task]:
+        return self.task_repository.list()
