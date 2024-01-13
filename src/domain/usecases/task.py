@@ -7,3 +7,7 @@ class TaskUseCases(ABC):
     @abstractmethod
     def create(self, task: Type[Task]):
         pass
+
+    @abstractmethod
+    def list(self):
+        pass
