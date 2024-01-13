@@ -17,3 +17,10 @@ functions:
       - httpApi:
           path: /task
           method: post
+
+  list-task:
+    handler: src/infra/functions/list-tasks.handle
+    events:
+      - httpApi:
+          path: /task
+          method: get
