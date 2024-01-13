@@ -29,8 +29,6 @@ class TaskPostgresRepository(TaskRepository):
             for row in rows:
                 results.append(Task(row[1], row[2]))
 
-            print(results)
-            connection.commit()
             return results
         except Exception as error:
             raise error
