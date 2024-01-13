@@ -1,15 +1,12 @@
+from src.infra.factories.controllers.create_task import make_create_task_controller
 import json
 
 
 def handle(event, context):
-    body = {
-        "message": "task created",
-        "input": event
-    }
-
+    controller = make_create_task_controller()
+    controller.handle({"title": "test"})
     response = {
         "statusCode": 201,
-        "body": json.dumps(body)
+        "body": json.dumps(event)
     }
-
     return response

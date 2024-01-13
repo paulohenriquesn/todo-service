@@ -1,7 +1,7 @@
 from dataclasses import dataclass
-from domain.usecases.task import TaskUseCases
-from domain.entities.task import Task
-from domain.repositories.task import TaskRepository
+from src.domain.usecases.task import TaskUseCases
+from src.domain.entities.task import Task
+from src.domain.repositories.task import TaskRepository
 
 
 @dataclass

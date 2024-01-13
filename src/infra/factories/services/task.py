@@ -1,5 +1,5 @@
-from infra.repositories.task import TaskPostgresRepository
-from data.task import TaskService
+from src.infra.repositories.task import TaskPostgresRepository
+from src.data.task import TaskService
 
 
 def make_task_service():

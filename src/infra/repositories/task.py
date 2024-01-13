@@ -1,9 +1,9 @@
 import uuid
 from typing import Type
 from pypika import Query, Table
-from domain.repositories.task import TaskRepository
-from domain.entities.task import Task
-from infra.db.pg import connection
+from src.domain.repositories.task import TaskRepository
+from src.domain.entities.task import Task
+from src.infra.db.pg import connection
 
 
 class TaskPostgresRepository(TaskRepository):

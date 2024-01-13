@@ -1,4 +1,4 @@
-from domain.entities.task import Task
+from src.domain.entities.task import Task
 from abc import ABC, abstractmethod
 
 
