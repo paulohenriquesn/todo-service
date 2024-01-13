@@ -1,8 +1,10 @@
 # Distribution / packaging
+node_modules
 .Python
 env/
 build/
 develop-eggs/
+__pycache__/
 dist/
 downloads/
 eggs/
