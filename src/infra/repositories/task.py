@@ -23,6 +23,7 @@ class TaskPostgresRepository(TaskRepository):
         cursor = connection.cursor()
         try:
             query = Query.from_(table_name).select('*')
+            print(query.get_sql())
             cursor.execute(query.get_sql())
             rows = cursor.fetchall()
             results = []
