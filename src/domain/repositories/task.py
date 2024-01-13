@@ -6,3 +6,7 @@ class TaskRepository(ABC):
     @abstractmethod
     def create(self, task: Task):
         pass
+
+    @abstractmethod
+    def list(self):
+        pass
