@@ -1,35 +1,37 @@
 import uuid
-from pypika import Query, Table
+from sqlalchemy import insert, select, Table, MetaData, Column, String, Boolean
 from src.domain.repositories.task import TaskRepository
 from src.domain.entities.task import Task
-from src.infra.db.pg import connection
+from src.infra.db.pg import engine
+
+
+tasks = Table(
+    "tasks",
+    MetaData(),
+    Column("id", String, primary_key=True),
+    Column("title", String, nullable=False),
+    Column("done", Boolean)
+)
 
 
 class TaskPostgresRepository(TaskRepository):
     def create(self, task: Task):
-        table_name = Table('tasks')
-        cursor = connection.cursor()
         try:
-            query = Query.into(table_name).insert(
-                uuid.uuid4(), task.title, False)
-            print(query.get_sql())
-            cursor.execute(query.get_sql())
-            connection.commit()
+            query = (insert(tasks).values(
+                id=uuid.uuid4(), title=task.title, done=False))
+            with engine.connect() as conn:
+                conn.execute(query)
+                conn.commit()
         except Exception as error:
             raise error
 
     def list(self) -> list[Task]:
-        table_name = Table('tasks')
-        cursor = connection.cursor()
         try:
-            query = Query.from_(table_name).select('*')
-            print(query.get_sql())
-            cursor.execute(query.get_sql())
-            rows = cursor.fetchall()
-            results = []
-            for row in rows:
-                results.append(Task(row[1], row[2]))
-
-            return results
+            query = (select(tasks))
+            with engine.connect() as conn:
+                results = []
+                for row in conn.execute(query):
+                    results.append(Task(row[1], row[2]))
+                return results
         except Exception as error:
             raise error
