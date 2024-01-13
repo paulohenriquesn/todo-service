@@ -4,16 +4,19 @@ import json
 
 def handle(event, context):
     controller = make_create_task_controller()
+    print(event)
+    event_json = json.loads(json.dumps(event))
+    body = json.loads(event_json['body'])
     try:
-        controller.handle({"title": "test"})
+        controller.handle({"title": body['title']})
         response = {
             "statusCode": 201,
-            "body": json.dumps(event)
         }
         return response
     except Exception as error:
         response = {
             "statusCode": 500,
-            "body": json.dumps(error)
+            "body": error
         }
+        print(error)
         return response

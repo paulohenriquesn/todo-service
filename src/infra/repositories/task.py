@@ -18,5 +18,3 @@ class TaskPostgresRepository(TaskRepository):
             connection.commit()
         except Exception as error:
             raise error
-        finally:
-            connection.close()
