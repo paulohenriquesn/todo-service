@@ -1,13 +1,11 @@
-from src.infra.factories.controllers.create_task import make_create_task_controller
-import json
+from src.app.factories.controllers.create_task import make_create_task_controller
+from src.app.proxy_request import proxy_request
 
 
 def handle(event, context):
     controller = make_create_task_controller()
-    event_json = json.loads(json.dumps(event))
-    body = json.loads(event_json['body'])
     try:
-        controller.handle({"title": body['title']})
+        proxy_request(controller, event)
         response = {
             "statusCode": 201,
         }
