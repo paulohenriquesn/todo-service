@@ -12,4 +12,4 @@ class CreateTaskController:
             self.TaskService.create(task)
             return True
         except Exception as error:
-            raise (error)
+            raise error

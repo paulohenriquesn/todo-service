@@ -7,13 +7,16 @@ from src.infra.db.pg import connection
 
 
 class TaskPostgresRepository(TaskRepository):
-    table_name = Table('tasks')
-    cursor = connection.cursor()
-
     def create(self, task: Type[Task]):
+        table_name = Table('tasks')
+        cursor = connection.cursor()
         try:
-            query = Query.into(self.table_name).insert(
+            query = Query.into(table_name).insert(
                 uuid.uuid4(), task.title, False)
-            self.cursor.execute(query)
+            print(query.get_sql())
+            cursor.execute(query.get_sql())
+            connection.commit()
         except Exception as error:
-            print(error)
+            raise error
+        finally:
+            connection.close()
