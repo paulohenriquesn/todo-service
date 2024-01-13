@@ -5,7 +5,7 @@ mccabe==0.7.0
 platformdirs==4.1.0
 psycopg2-binary==2.9.9
 pylint==3.0.3
-PyPika==0.48.9
+SQLAlchemy==2.0.25
 python-dotenv==1.0.0
 tomli==2.0.1
 tomlkit==0.12.3
