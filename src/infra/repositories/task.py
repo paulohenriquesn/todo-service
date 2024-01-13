@@ -7,7 +7,7 @@ from src.infra.db.pg import connection
 
 
 class TaskPostgresRepository(TaskRepository):
-    def create(self, task: Type[Task]):
+    def create(self, task: Task):
         table_name = Table('tasks')
         cursor = connection.cursor()
         try:

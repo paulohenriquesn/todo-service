@@ -4,7 +4,6 @@ import json
 
 def handle(event, context):
     controller = make_create_task_controller()
-    print(event)
     event_json = json.loads(json.dumps(event))
     body = json.loads(event_json['body'])
     try:
