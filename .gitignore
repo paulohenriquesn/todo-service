@@ -23,3 +23,4 @@ var/
 .serverless
 
 .DS_Store
+.coverage
