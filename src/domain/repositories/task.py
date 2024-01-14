@@ -14,3 +14,7 @@ class TaskRepository(ABC):
     @abstractmethod
     def delete(self, id: str) -> None:
         pass
+
+    @abstractmethod
+    def do(self, id: str) -> None:
+        pass
