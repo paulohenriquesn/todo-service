@@ -6,10 +6,9 @@ class CreateTaskController:
     def __init__(self, TaskService: TaskService):
         self.TaskService = TaskService
 
-    def handle(self, body: dict) -> bool:
+    def handle(self, body: dict) -> None:
         try:
-            task = Task(body['title'], False)
+            task = Task(None, body['title'], False)
             self.TaskService.create(task)
-            return True
         except Exception as error:
             raise error
