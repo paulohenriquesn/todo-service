@@ -1,8 +1,8 @@
 from unittest.mock import MagicMock
+from src.domain.entities.task import Task
 from src.data.task import TaskService
 from tests.stubs.repositories.task import TaskRepositoryStub
 from tests.entities.task import make_task
-from src.domain.entities.task import Task
 
 stub_repository = TaskRepositoryStub()
 service = TaskService(stub_repository)
