@@ -13,3 +13,6 @@ class TaskService(TaskUseCases):
 
     def list(self) -> list[Task]:
         return self.task_repository.list()
+
+    def delete(self, id: str):
+        return self.task_repository.delete(id)
