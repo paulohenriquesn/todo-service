@@ -31,7 +31,7 @@ class TaskPostgresRepository(TaskRepository):
             with engine.connect() as conn:
                 results = []
                 for row in conn.execute(query):
-                    results.append(Task(row[1], row[2]))
+                    results.append(Task(row[0], row[1], row[2]))
                 return results
         except Exception as error:
             raise error
