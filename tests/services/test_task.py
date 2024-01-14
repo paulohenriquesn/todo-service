@@ -25,6 +25,14 @@ class TestDelete:
         stub_repository.delete.assert_called_once_with(fake_id)
 
 
+class TestDo:
+    def test_repository_is_called(self):
+        fake_id = 'fake_id'
+        stub_repository.do = MagicMock()
+        service.do(fake_id)
+        stub_repository.do.assert_called_once_with(fake_id)
+
+
 class TestList:
     def test_repository_is_returning(self):
         sut = service.list()
