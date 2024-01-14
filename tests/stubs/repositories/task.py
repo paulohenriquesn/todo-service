@@ -9,3 +9,6 @@ class TaskRepositoryStub(TaskRepository):
 
     def list(self) -> list[Task]:
         return [make_task()]
+
+    def delete(self, id: str) -> None:
+        pass
