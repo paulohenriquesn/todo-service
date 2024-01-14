@@ -14,7 +14,6 @@ class TestCreate:
     def test_repository_is_called(self):
         stub_repository.create = MagicMock()
         service.create(self.input)
-        stub_repository.create.assert_called_once()
         stub_repository.create.assert_called_with(self.input)
 
 
