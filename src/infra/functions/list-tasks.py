@@ -7,7 +7,6 @@ def handle(event, context):
     controller = make_list_tasks_controller()
     try:
         tasks = proxy_request(controller, event)
-        print(tasks)
         response = {
             "statusCode": 200,
             "body": json.dumps(tasks, default=lambda x: x.__dict__)
