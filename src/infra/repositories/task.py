@@ -38,7 +38,7 @@ class TaskPostgresRepository(TaskRepository):
 
     def delete(self, id: str) -> None:
         try:
-            query = (delete(tasks).where(id=id))
+            query = (delete(tasks).where(tasks.c.id == id))
             with engine.connect() as conn:
                 conn.execute(query)
                 conn.commit()
