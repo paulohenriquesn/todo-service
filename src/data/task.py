@@ -16,3 +16,6 @@ class TaskService(TaskUseCases):
 
     def delete(self, id: str):
         return self.task_repository.delete(id)
+
+    def do(self, id: str):
+        return self.task_repository.do(id)
