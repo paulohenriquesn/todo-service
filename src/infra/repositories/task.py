@@ -1,5 +1,5 @@
 import uuid
-from sqlalchemy import insert, select, Table, MetaData, Column, String, Boolean
+from sqlalchemy import delete, insert, select, Table, MetaData, Column, String, Boolean
 from src.domain.repositories.task import TaskRepository
 from src.domain.entities.task import Task
 from src.infra.db.pg import engine
@@ -33,5 +33,14 @@ class TaskPostgresRepository(TaskRepository):
                 for row in conn.execute(query):
                     results.append(Task(row[0], row[1], row[2]))
                 return results
+        except Exception as error:
+            raise error
+
+    def delete(self, id: str) -> None:
+        try:
+            query = (delete(tasks).where(id=id))
+            with engine.connect() as conn:
+                conn.execute(query)
+                conn.commit()
         except Exception as error:
             raise error
