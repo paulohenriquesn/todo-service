@@ -14,8 +14,8 @@ class TaskService(TaskUseCases):
     def list(self) -> list[Task]:
         return self.task_repository.list()
 
-    def delete(self, id: str):
+    def delete(self, id: str) -> None:
         return self.task_repository.delete(id)
 
-    def do(self, id: str):
+    def do(self, id: str) -> None:
         return self.task_repository.do(id)
