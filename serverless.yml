@@ -31,3 +31,10 @@ functions:
       - httpApi:
           path: /task
           method: delete
+
+  do-task:
+    handler: src/infra/functions/do-task.handle
+    events:
+      - httpApi:
+          path: /task/do
+          method: put
