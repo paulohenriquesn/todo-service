@@ -12,3 +12,6 @@ class TaskRepositoryStub(TaskRepository):
 
     def delete(self, id: str) -> None:
         pass
+
+    def do(self, id: str) -> None:
+        pass
