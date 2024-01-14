@@ -11,3 +11,7 @@ class TaskUseCases(ABC):
     @abstractmethod
     def list(self):
         pass
+
+    @abstractmethod
+    def delete(self, id: str):
+        pass
